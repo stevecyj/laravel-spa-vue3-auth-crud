@@ -19668,7 +19668,8 @@ __webpack_require__.r(__webpack_exports__);
     return {
       email: "",
       password: "",
-      error: null
+      error: null,
+      currentUrl: ""
     };
   },
   methods: {
@@ -19678,15 +19679,17 @@ __webpack_require__.r(__webpack_exports__);
       e.preventDefault();
 
       if (this.password.length > 0) {
-        this.$axios.get('/sanctum/csrf-cookie').then(function (response) {
-          _this.$axios.post('api/login', {
+        this.$axios.get("".concat(this.currentUrl, "sanctum/csrf-cookie")).then(function (response) {
+          _this.$axios.post("".concat(_this.currentUrl, "api/login"), {
             email: _this.email,
             password: _this.password
           }).then(function (response) {
             console.log(response.data);
 
             if (response.data.success) {
-              _this.$router.go('/dashboard');
+              window.laravel = {
+                isLoggedin: false
+              }; // this.$router.push({ name: "dashboard" });
             } else {
               _this.error = response.data.message;
             }
@@ -19699,10 +19702,15 @@ __webpack_require__.r(__webpack_exports__);
   },
   beforeRouteEnter: function beforeRouteEnter(to, from, next) {
     if (window.Laravel.isLoggedin) {
-      return next('dashboard');
+      return next("dashboard");
     }
 
     next();
+  },
+  created: function created() {
+    var currentUrl = window.location.pathname;
+    this.currentUrl = currentUrl;
+    console.log(currentUrl);
   }
 });
 
@@ -20289,7 +20297,7 @@ var _hoisted_8 = {
 
 var _hoisted_9 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", {
   "for": "email",
-  "class": "col-sm-4 col-form-label text-md-right"
+  "class": "\n                                        col-sm-4 col-form-label\n                                        text-md-right\n                                    "
 }, "E-Mail Address", -1
 /* HOISTED */
 );
@@ -20308,7 +20316,7 @@ var _hoisted_12 = {
 
 var _hoisted_13 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", {
   "for": "password",
-  "class": "col-md-4 col-form-label text-md-right"
+  "class": "\n                                        col-md-4 col-form-label\n                                        text-md-right\n                                    "
 }, "Password", -1
 /* HOISTED */
 );

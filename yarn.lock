@@ -1120,6 +1120,11 @@
     "@vue/compiler-dom" "3.0.5"
     "@vue/shared" "3.0.5"
 
+"@vue/devtools-api@^6.0.0-beta.11":
+  "integrity" "sha512-quBx4Jjpexo6KDiNUGFr/zF/2A4srKM9S9v2uHgMXSU//hjgq1eGzqkIFql8T9gfX5ZaVOUzYBP3jIdIR3PKIA=="
+  "resolved" "https://registry.npmjs.org/@vue/devtools-api/-/devtools-api-6.0.0-beta.15.tgz"
+  "version" "6.0.0-beta.15"
+
 "@vue/reactivity@3.0.5":
   "integrity" "sha512-3xodUE3sEIJgS7ntwUbopIpzzvi7vDAOjVamfb2l+v1FUg0jpd3gf62N2wggJw3fxBMr+QvyxpD+dBoxLsmAjw=="
   "resolved" "https://registry.npmjs.org/@vue/reactivity/-/reactivity-3.0.5.tgz"
@@ -6780,7 +6785,7 @@
   "resolved" "https://registry.npmjs.org/vue-router/-/vue-router-4.0.3.tgz"
   "version" "4.0.3"
 
-"vue@^3.0.0", "vue@^3.0.5", "vue@3.0.5":
+"vue@^3.0.0", "vue@^3.0.2", "vue@^3.0.5", "vue@3.0.5":
   "integrity" "sha512-TfaprOmtsAfhQau7WsomXZ8d9op/dkQLNIq8qPV3A0Vxs6GR5E+c1rfJS1SDkXRQj+dFyfnec7+U0Be1huiScg=="
   "resolved" "https://registry.npmjs.org/vue/-/vue-3.0.5.tgz"
   "version" "3.0.5"
@@ -6788,6 +6793,13 @@
     "@vue/compiler-dom" "3.0.5"
     "@vue/runtime-dom" "3.0.5"
     "@vue/shared" "3.0.5"
+
+"vuex@^4.0.2":
+  "integrity" "sha512-M6r8uxELjZIK8kTKDGgZTYX/ahzblnzC4isU1tpmEuOIIKmV+TRdc+H4s8ds2NuZ7wpUTdGRzJRtoj+lI+pc0Q=="
+  "resolved" "https://registry.npmjs.org/vuex/-/vuex-4.0.2.tgz"
+  "version" "4.0.2"
+  dependencies:
+    "@vue/devtools-api" "^6.0.0-beta.11"
 
 "watchpack@^2.0.0":
   "integrity" "sha512-UjgD1mqjkG99+3lgG36at4wPnUXNvis2v1utwTgQ43C22c4LD71LsYMExdWXh4HZ+RmW+B0t1Vrg2GpXAkTOQw=="
