@@ -67,15 +67,15 @@ export default {
         this.handleUrl(currentUrl);
     },
     mounted() {
-        this.handleSetUser("aaa");
-        this.handleInit();
+        // this.handleSetUser("aaa");
+        // this.handleLogin();
         // console.log(this.getUser);
     },
     methods: {
-        ...mapActions("Auth", ["handleSetUser", "handleUrl", "handleInit"]),
-        test() {
-            console.log("test");
-        },
+        ...mapActions("Auth", ["handleSetUser", "handleUrl", "handleLogin"]),
+        // test() {
+        //     console.log("test");
+        // },
         logout(e) {
             console.log("ss");
             e.preventDefault();

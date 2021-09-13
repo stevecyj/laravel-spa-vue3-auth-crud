@@ -3,6 +3,7 @@ import {
     createWebHashHistory,
     createRouter,
 } from "vue-router";
+import store from "../store";
 
 import Home from "../pages/Home";
 import About from "../pages/About";
@@ -60,6 +61,11 @@ export const routes = [
 const router = createRouter({
     history: createWebHashHistory(),
     routes: routes,
+});
+
+router.beforeEach((to, from, next) => {
+    const isLogin = store.state.Auth.isLogin;
+    console.log(isLogin);
 });
 
 export default router;

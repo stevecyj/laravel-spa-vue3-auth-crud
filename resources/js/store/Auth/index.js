@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export default {
-    state: { user: "abc", currentUrl: "" },
+    state: { user: "", isLogin: false, currentUrl: "" },
     actions: {
         handleSetUser({ commit }, payload) {
             commit("SET_USER", payload);
@@ -9,18 +9,21 @@ export default {
         handleUrl({ commit }, payload) {
             commit("SET_URL", payload);
         },
-        handleInit({ commit, getters }, payload) {
-            // console.log(getters.getCurrentUrl);
+        handleLogin({ commit, getters }, payload) {
             axios
-                .post(`${getters.getCurrentUrl}api/login`, {
-                    email: "nei@nei.com",
-                    password: "neineinei",
-                })
-                .then((res) => {
-                    console.log(res);
-                })
-                .catch((err) => console.log(err));
-            commit("INIT");
+                .get(`${getters.getCurrentUrl}sanctum/csrf-cookie`)
+                .then((response) => {
+                    axios
+                        .post(`${getters.getCurrentUrl}api/login`, {
+                            email: payload.email,
+                            password: payload.password,
+                        })
+                        .then((res) => {
+                            console.log(res.data);
+                            commit("LOGIN", res.data);
+                        })
+                        .catch((err) => console.error(err));
+                });
         },
     },
     mutations: {
@@ -31,8 +34,9 @@ export default {
         SET_URL(state, payload) {
             state.currentUrl = payload;
         },
-        INIT(state, payload) {
-            // console.log(state);
+        LOGIN(state, payload) {
+            state.user = payload.auth_user.name;
+            state.isLogin = payload.auth_check;
         },
     },
     getters: {

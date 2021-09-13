@@ -1,7 +1,5 @@
 <template>
-    <div>
-        Welcome {{ name }}
-    </div>
+    <div>Welcome {{ name }}</div>
 </template>
 
 <script>
@@ -10,18 +8,18 @@ export default {
     data() {
         return {
             name: null,
-        }
+        };
     },
     created() {
         if (window.Laravel.user) {
-            this.name = window.Laravel.user.name
+            this.name = window.Laravel.user.name;
         }
     },
-    beforeRouteEnter(to, from, next) {
-        if (!window.Laravel.isLoggedin) {
-            window.location.href = "/";
-        }
-        next();
-    }
-}
+    // beforeRouteEnter(to, from, next) {
+    //     if (!window.Laravel.isLoggedin) {
+    //         window.location.href = "/";
+    //     }
+    //     next();
+    // }
+};
 </script>
