@@ -50,7 +50,7 @@
 </template>
 
 <script>
-import { mapState, mapActions } from "vuex";
+import { mapState, mapActions, mapGetters } from "vuex";
 export default {
     name: "App",
     data() {
@@ -60,14 +60,19 @@ export default {
     },
     computed: {
         ...mapState("Auth", ["user"]),
+        ...mapGetters("Auth", ["getUser"]),
     },
-    created() {},
+    created() {
+        let currentUrl = window.location.pathname;
+        this.handleUrl(currentUrl);
+    },
     mounted() {
         this.handleSetUser("aaa");
-        console.log(this.user);
+        this.handleInit();
+        // console.log(this.getUser);
     },
     methods: {
-        ...mapActions("Auth", ["handleSetUser"]),
+        ...mapActions("Auth", ["handleSetUser", "handleUrl", "handleInit"]),
         test() {
             console.log("test");
         },

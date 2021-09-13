@@ -24,11 +24,11 @@
 ]) !!}
         </script>
     @endif --}}
-    <script>
+    {{-- <script>
         window.Laravel = {!! json_encode([
     'isLoggedin' => false,
 ]) !!}
-    </script>
+    </script> --}}
     <div id="app">
     </div>
     <script src="{{ asset('js/app.js') }}" type="text/javascript"></script>
